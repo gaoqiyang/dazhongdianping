@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "MyViewController.h"
+#import "GroupViewController.h"
+#import "FirstViewController.h"
+#import "FoundViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +18,44 @@
 
 @implementation AppDelegate
 
+- (void)dealloc
+{
+    [_window release];
+    [super dealloc];
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    _window.backgroundColor = [UIColor whiteColor];
+    
+    [_window makeKeyAndVisible];
+    
+    MyViewController *myView = [[MyViewController alloc] init];
+    
+    GroupViewController *groupViewC = [[GroupViewController alloc] init];
+    FoundViewController *foundViewC = [[FoundViewController alloc] init];
+    
+    FirstViewController *firstViewC = [[FirstViewController alloc] init];
+    
+    UINavigationController *myNaVC = [[[UINavigationController alloc] initWithRootViewController:myView] autorelease];
+    
+    UINavigationController *groupNaVC = [[[UINavigationController alloc] initWithRootViewController:groupViewC] autorelease];
+    
+    UINavigationController *foundNaVC = [[[UINavigationController alloc] initWithRootViewController:foundViewC] autorelease];
+    
+    UINavigationController *firstNaVC = [[[UINavigationController alloc] initWithRootViewController:firstViewC] autorelease];
+    
+    UITabBarController *tabBarC = [[[UITabBarController alloc] init] autorelease];
+    
+    tabBarC.viewControllers = @[firstNaVC, groupNaVC, foundNaVC, myNaVC];
+    
+    _window.rootViewController = tabBarC;
+    
+    
     return YES;
 }
 

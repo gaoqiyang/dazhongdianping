@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FoundViewController.h
 //  demo
 //
 //  Created by qianfeng on 15/3/29.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface FoundViewController : UIViewController
 
 @end
-
